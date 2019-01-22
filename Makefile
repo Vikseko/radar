@@ -8,7 +8,7 @@ all:
 	###                PaInleSS                    ###
 	##################################################
 	+ $(MAKE) -C painless-src
-	mv painless-src/painless painless-maplecomsps
+	mv painless-src/painless painless-radar
 
 clean:
 	##################################################
@@ -20,4 +20,4 @@ clean:
 	###                PaInleSS                    ###
 	##################################################
 	+ $(MAKE) clean -C painless-src
-	rm -f painless-maplecomsps
+	rm -f painless-radar
