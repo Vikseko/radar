@@ -49,18 +49,18 @@ RadarSatSharing::doSharing(int idSharer, const vector<SolverInterface *> & from,
 
          for (size_t k = 0; k < tmp.size(); k++) {
             std::vector<int> vecclause;
-            //std::ofstream out1("./vecclause.txt", std::ios::app);
+            std::ofstream out1("./vecclause.txt", std::ios::app);
             for(int s = 0; s < tmp[k]->size; s++)
             {
             	vecclause.push_back(tmp[k]->lits[s]);
             	    
-					//if (out1.is_open())
-					//{
-    				//	out1 << tmp[k]->lits[s] << endl;
-					//}
+					if (out1.is_open())
+					{
+    					out1 << tmp[k]->lits[s] << endl;
+					}
             }
-         //out1 << "qwe" << endl;
-			//out1.close();
+            out1 << "qwe" << endl;
+			   out1.close();
             auto it = hashtable1.find(vecclause);
             if(it != hashtable1.end())
             {
