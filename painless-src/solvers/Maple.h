@@ -122,7 +122,7 @@ protected:
    
    /// Callback to export/import clauses.
    friend MapleCOMSPS::Lit  cbkImportUnit  (void *);
-   friend bool cbkImportClause(void *, int *, MapleCOMSPS::vec<MapleCOMSPS::Lit> &);
+   friend bool cbkImportClause(void *, int *, bool *, MapleCOMSPS::vec<MapleCOMSPS::Lit> &);
    friend void cbkExportClause(void *, int, MapleCOMSPS::vec<MapleCOMSPS::Lit> &);
 };
 

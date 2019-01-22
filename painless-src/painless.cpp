@@ -25,7 +25,7 @@
 
 #include "clauses/ClauseManager.h"
 
-#include "sharing/HordeSatSharing.h"
+#include "sharing/RadarSatSharing.h"
 #include "sharing/Sharer.h"
 
 #include "working/SequentialWorker.h"
@@ -114,7 +114,7 @@ int main(int argc, char ** argv)
    for (size_t i = 0; i < nSharers; i++) {
       from.clear();
       from.push_back(solvers[i]);
-      sharers[i] = new Sharer(i, new HordeSatSharing(), from, solvers);
+      sharers[i] = new Sharer(i, new RadarSatSharing(), from, solvers);
    }
 
    working = new Portfolio();

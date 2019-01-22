@@ -79,9 +79,9 @@ Lit cbkImportUnit(void * issuer)
    return l;
 }
 
-bool cbkImportClause(void * issuer, int * lbd, vec<Lit> & mcls)
+bool cbkImportClause(void * issuer, int * lbd, bool * repeat, vec<Lit> & mcls)
 {
-	Maple* mp = (Maple*)issuer;
+   Maple* mp = (Maple*)issuer;
 
    ClauseExchange * cls = NULL;
 
@@ -91,6 +91,7 @@ bool cbkImportClause(void * issuer, int * lbd, vec<Lit> & mcls)
    makeMiniVec(cls, mcls);
 
    *lbd = cls->lbd;
+   *repeat = cls->repeat;
 
    ClauseManager::releaseClause(cls);
 
