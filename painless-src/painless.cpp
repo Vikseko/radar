@@ -109,7 +109,7 @@ int main(int argc, char ** argv)
    vector<SolverInterface *> from;
    // Start sharing threads
    //nSharers = nSolvers;
-   nSharers = nSolvers;
+   nSharers = 1;
    sharers  = new Sharer*[nSharers];
    sharers[0] = new Sharer(0, new RadarSatSharing(), solvers, solvers);
 /*
