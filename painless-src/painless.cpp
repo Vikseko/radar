@@ -108,14 +108,17 @@ int main(int argc, char ** argv)
 
    vector<SolverInterface *> from;
    // Start sharing threads
+   //nSharers = nSolvers;
    nSharers = nSolvers;
    sharers  = new Sharer*[nSharers];
-
+   sharers[0] = new Sharer(0, new RadarSatSharing(), solvers, solvers);
+/*
    for (size_t i = 0; i < nSharers; i++) {
       from.clear();
       from.push_back(solvers[i]);
       sharers[i] = new Sharer(i, new RadarSatSharing(), from, solvers);
    }
+*/
 
    working = new Portfolio();
    for (size_t i = 0; i < nSolvers; i++) {
