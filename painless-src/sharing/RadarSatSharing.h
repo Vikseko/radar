@@ -52,18 +52,21 @@ public:
 
    /// Return the sharing statistics of this sharng strategy.
    SharingStatistics getStatistics();
-    struct VectorHash {
-      size_t operator()(const std::vector<int>& v) const {
+    
+
+    /// Hashtable for repeateble clauses
+    struct ClauseHash {
+      size_t operator()(const ClauseExchange& clause) const {
         std::hash<int> hasher;
         size_t seed = 0;
-        for (int i : v) {
-            seed ^= hasher(i) + 0x9e3779b9 + (seed<<6) + (seed>>2);
+        for(int s = 0; s < clause.size; s++)
+        {
+          seed ^= hasher(clause.lits[s]) + 0x9e3779b9 + (seed<<6) + (seed>>2);
         }
         return seed;
       }
     };
-    /// Hashtable for repeateble clauses
-    typedef std::unordered_map<vector<int>, int, VectorHash> hashtable;
+    typedef std::unordered_map<ClauseExchange, int, ClauseHash> hashtable;
     hashtable hashtable1;
 
     /// Count for sharing with repeats
