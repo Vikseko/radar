@@ -47,16 +47,16 @@ RadarSatSharing::doSharing(int idSharer, const vector<SolverInterface *> & from,
             tmp[k]->repeat = true; 
 
             ///Clause for hashtable
-            ClauseExchange cfh = *tmp[k];
+            //ClauseExchange cfh = *tmp[k];
 
-            auto it = hashtable1.find(cfh);
+            auto it = hashtable1.find(tmp[k]);
             if(it != hashtable1.end())
             {
                it->second++;
             }
             else
             {
-               hashtable1[cfh] = 1;
+               hashtable1[tmp[k]] = 1;
             }
          }
 
@@ -68,7 +68,8 @@ RadarSatSharing::doSharing(int idSharer, const vector<SolverInterface *> & from,
          {
             if(clause.second>1)
             {
-                 tmp.push_back(&clause.first);
+               //ClauseExchange* clausefirst = &clause.first;
+               tmp.push_back(clause.first);
             }
          }
 
@@ -88,9 +89,9 @@ RadarSatSharing::doSharing(int idSharer, const vector<SolverInterface *> & from,
    }
    else if(sharingcount>100){     ///Esli sharing bol'she chem №100, to ne ispolsuem hashtable i obmenivaemsya po sheme "vsyo vsem"
 
-         if(sharingcount==101){   ///chistim hashtable, ona nam bol'she ne nuzhna
-            hashtable1.clear();
-         }
+         //if(sharingcount==101){   ///chistim hashtable, ona nam bol'she ne nuzhna
+         //   hashtable1.clear();
+         //}
 
          for (int i = 0; i < from.size(); i++) {
          tmp.clear();
@@ -136,16 +137,16 @@ RadarSatSharing::doSharing(int idSharer, const vector<SolverInterface *> & from,
             tmp[k]->repeat = true;
 
             ///Clause for hashtable
-            ClauseExchange cft = *tmp{k};
+            //ClauseExchange cft = *tmp{k};
 
-            auto it = hashtable1.find(cft);
+            auto it = hashtable1.find(tmp[k]);
             if(it != hashtable1.end())
             {
                it->second++;
             }
             else
             {
-               hashtable1[cft] = 1;
+               hashtable1[tmp[k]] = 1;
             }
          }
 

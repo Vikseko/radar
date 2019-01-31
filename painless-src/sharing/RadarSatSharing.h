@@ -56,17 +56,17 @@ public:
 
     /// Hashtable for repeateble clauses
     struct ClauseHash {
-      size_t operator()(const ClauseExchange& clause) const {
+      size_t operator()(const ClauseExchange* clause) const {
         std::hash<int> hasher;
         size_t seed = 0;
-        for(int s = 0; s < clause.size; s++)
+        for(int s = 0; s < clause->size; s++)
         {
-          seed ^= hasher(clause.lits[s]) + 0x9e3779b9 + (seed<<6) + (seed>>2);
+          seed ^= hasher(clause->lits[s]) + 0x9e3779b9 + (seed<<6) + (seed>>2);
         }
         return seed;
       }
     };
-    typedef std::unordered_map<ClauseExchange, int, ClauseHash> hashtable;
+    typedef std::unordered_map<ClauseExchange*, int, ClauseHash> hashtable;
     hashtable hashtable1;
 
     /// Count for sharing with repeats
